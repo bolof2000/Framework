@@ -8,7 +8,7 @@ import os
 class LoginTests(unittest.TestCase):
 
     def test_validLogin(self):
-        # baseURL = "https://letskodeit.teachable.com/"
+
         baseURL = "https://stportal.victorops.com/membership/#/"
         driverLocation = "/Users/bolof/Documents/selenium/base/chromedriver"
         os.environ["webdriver.chrome.driver"] = driverLocation
@@ -20,10 +20,8 @@ class LoginTests(unittest.TestCase):
         driver.get(baseURL)
 
         lp = LoginPage(driver)
-        lp.login("bolof2000", "Dammy2k100")
+        lp.login("bolo", "2k19")
 
-        userIcon = driver.find_element(By.LINK_TEXT, "Create Incident")
-        if userIcon is not None:
-            print("Login Successful")
-        else:
-            print("Login Failed")
+        result = lp.verifyLoginSuccessful()
+        assert result == True
+        driver.quit()
